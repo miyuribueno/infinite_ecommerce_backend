@@ -13,6 +13,7 @@ exports.controller = void 0;
 require("reflect-metadata");
 var AppRouter_1 = require("../../AppRouter");
 var MetadataKeys_1 = require("./MetadataKeys");
+// Validates req.body
 var bodyValidators = function (keys) {
     return function (req, res, next) {
         if (!req.body) {
@@ -29,6 +30,7 @@ var bodyValidators = function (keys) {
         next();
     };
 };
+// Controller decorator
 var controller = function (routePrefix) {
     return function (target) {
         var router = AppRouter_1.AppRouter.getInstance();

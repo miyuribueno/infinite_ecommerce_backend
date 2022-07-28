@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var index_1 = require("./decorators/index");
 var RootController = /** @class */ (function () {
+    // Root route
     function RootController() {
     }
     RootController.prototype.getRoot = function (req, res) {
@@ -24,6 +25,7 @@ var RootController = /** @class */ (function () {
     ], RootController.prototype, "getRoot", null);
     RootController = __decorate([
         (0, index_1.controller)("")
+        // Root route
     ], RootController);
     return RootController;
 }());

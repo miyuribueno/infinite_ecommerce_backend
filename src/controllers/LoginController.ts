@@ -10,6 +10,7 @@ class LoginController {
     res.send("Login page");
   }
 
+  // User registration
   @post("/signup")
   @bodyValidator("email", "password")
   async signup(req: Request, res: Response) {
@@ -32,6 +33,7 @@ class LoginController {
     }
   }
 
+  // User login
   @post("/signin")
   @bodyValidator("email", "password")
   async signin(req: Request, res: Response) {

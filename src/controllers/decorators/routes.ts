@@ -7,6 +7,7 @@ interface RouteHandlerDescriptor extends PropertyDescriptor {
   value?: RequestHandler;
 }
 
+// Route decorator factory
 const routeBinder = (method: string) => {
   return (path: string) => {
     return (target: any, key: string, desc: RouteHandlerDescriptor) => {
@@ -16,6 +17,7 @@ const routeBinder = (method: string) => {
   };
 };
 
+// Routes decorators
 export const get = routeBinder(Methods.get);
 export const post = routeBinder(Methods.post);
 export const put = routeBinder(Methods.put);

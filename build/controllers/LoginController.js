@@ -57,6 +57,7 @@ var LoginController = /** @class */ (function () {
     LoginController.prototype.getLogin = function (req, res) {
         res.send("Login page");
     };
+    // User registration
     LoginController.prototype.signup = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
             var _a, email, password, user;
@@ -99,6 +100,7 @@ var LoginController = /** @class */ (function () {
             });
         });
     };
+    // User login
     LoginController.prototype.signin = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
             var _a, email, password, user, match;

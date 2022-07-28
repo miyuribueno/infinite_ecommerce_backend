@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.bodyValidator = void 0;
 require("reflect-metadata");
 var MetadataKeys_1 = require("./MetadataKeys");
+// req.body validator decorator
 var bodyValidator = function () {
     var keys = [];
     for (var _i = 0; _i < arguments.length; _i++) {

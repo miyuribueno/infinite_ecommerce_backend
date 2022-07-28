@@ -4,6 +4,7 @@ import { AppRouter } from "../../AppRouter";
 import { Methods } from "./Methods";
 import { MetadataKeys } from "./MetadataKeys";
 
+// Validates req.body
 const bodyValidators = (keys: string): RequestHandler => {
   return (req: Request, res: Response, next: NextFunction) => {
     if (!req.body) {
@@ -22,6 +23,7 @@ const bodyValidators = (keys: string): RequestHandler => {
   };
 };
 
+// Controller decorator
 export const controller = (routePrefix: string) => {
   return (target: Function) => {
     const router = AppRouter.getInstance();

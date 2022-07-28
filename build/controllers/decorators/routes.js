@@ -4,6 +4,7 @@ exports.patch = exports.del = exports.put = exports.post = exports.get = void 0;
 require("reflect-metadata");
 var Methods_1 = require("./Methods");
 var MetadataKeys_1 = require("./MetadataKeys");
+// Route decorator factory
 var routeBinder = function (method) {
     return function (path) {
         return function (target, key, desc) {
@@ -12,6 +13,7 @@ var routeBinder = function (method) {
         };
     };
 };
+// Routes decorators
 exports.get = routeBinder(Methods_1.Methods.get);
 exports.post = routeBinder(Methods_1.Methods.post);
 exports.put = routeBinder(Methods_1.Methods.put);
