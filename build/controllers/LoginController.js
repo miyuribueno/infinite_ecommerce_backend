@@ -99,6 +99,37 @@ var LoginController = /** @class */ (function () {
             });
         });
     };
+    LoginController.prototype.signin = function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, email, password, user, match;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = req.body, email = _a.email, password = _a.password;
+                        return [4 /*yield*/, UserModel_1.default.findOne({ email: email })];
+                    case 1:
+                        user = _b.sent();
+                        if (!user) return [3 /*break*/, 3];
+                        return [4 /*yield*/, bcrypt_1.default.compare(password, user.password)];
+                    case 2:
+                        match = _b.sent();
+                        if (match) {
+                            res.send(user);
+                        }
+                        else {
+                            res.status(401);
+                            res.send({ error: "Login failed." });
+                        }
+                        return [3 /*break*/, 4];
+                    case 3:
+                        res.status(401);
+                        res.send({ error: "Invalid email or password." });
+                        _b.label = 4;
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
     __decorate([
         (0, index_1.get)("/login"),
         __metadata("design:type", Function),
@@ -112,6 +143,13 @@ var LoginController = /** @class */ (function () {
         __metadata("design:paramtypes", [Object, Object]),
         __metadata("design:returntype", Promise)
     ], LoginController.prototype, "postLogin", null);
+    __decorate([
+        (0, index_1.post)("/signin"),
+        (0, index_1.bodyValidator)("email", "password"),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object, Object]),
+        __metadata("design:returntype", Promise)
+    ], LoginController.prototype, "signin", null);
     LoginController = __decorate([
         (0, index_1.controller)("/auth")
     ], LoginController);

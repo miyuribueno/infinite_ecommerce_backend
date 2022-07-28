@@ -31,4 +31,23 @@ class LoginController {
       });
     }
   }
+
+  @post("/signin")
+  @bodyValidator("email", "password")
+  async signin(req: Request, res: Response) {
+    const { email, password } = req.body;
+    const user = await UserModel.findOne({ email });
+    if (user) {
+      const match = await bcrypt.compare(password, user.password);
+      if (match) {
+        res.send(user);
+      } else {
+        res.status(401);
+        res.send({ error: "Login failed." });
+      }
+    } else {
+      res.status(401);
+      res.send({ error: "Invalid email or password." });
+    }
+  }
 }
