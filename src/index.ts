@@ -3,6 +3,10 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import cookieSession from "cookie-session";
+import { router } from "./routes/loginRoutes";
+import { AppRouter } from "./AppRouter";
+import "./controllers/LoginContorller";
 
 dotenv.config();
 
@@ -15,10 +19,11 @@ const app = express();
 
 // App configuration
 
-app.use(cors());
 app.use(express.json());
-
-app.get("/", (req, res) => res.send("Infinite Ecommerce"));
+app.use(cookieSession({ keys: ["Infinite_eComm"] }));
+app.use(cors());
+app.use(router);
+app.use(AppRouter.getInstance());
 
 // Server activation
 
