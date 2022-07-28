@@ -57,7 +57,7 @@ var LoginController = /** @class */ (function () {
     LoginController.prototype.getLogin = function (req, res) {
         res.send("Login page");
     };
-    LoginController.prototype.postLogin = function (req, res) {
+    LoginController.prototype.signup = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
             var _a, email, password, user;
             var _this = this;
@@ -142,7 +142,7 @@ var LoginController = /** @class */ (function () {
         __metadata("design:type", Function),
         __metadata("design:paramtypes", [Object, Object]),
         __metadata("design:returntype", Promise)
-    ], LoginController.prototype, "postLogin", null);
+    ], LoginController.prototype, "signup", null);
     __decorate([
         (0, index_1.post)("/signin"),
         (0, index_1.bodyValidator)("email", "password"),

@@ -12,7 +12,7 @@ class LoginController {
 
   @post("/signup")
   @bodyValidator("email", "password")
-  async postLogin(req: Request, res: Response) {
+  async signup(req: Request, res: Response) {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (user) {
