@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { get, post, controller, bodyValidator } from "./decorators/index";
-import UserModel from "../models/UserModel";
+import User from "../models/UserModel";
 import bcrypt from "bcrypt";
 
 @controller("/auth")
@@ -14,14 +14,14 @@ class LoginController {
   @bodyValidator("email", "password")
   async postLogin(req: Request, res: Response) {
     const { email, password } = req.body;
-    const user = await UserModel.findOne({ email });
+    const user = await User.findOne({ email });
     if (user) {
       res.status(400);
       res.send({ error: "User already exists." });
     } else {
       bcrypt.hash(password, 12, async (err, hash) => {
         if (err) throw err;
-        const newUser = new UserModel({
+        const newUser = new User({
           email,
           password: hash,
         });
@@ -36,7 +36,7 @@ class LoginController {
   @bodyValidator("email", "password")
   async signin(req: Request, res: Response) {
     const { email, password } = req.body;
-    const user = await UserModel.findOne({ email });
+    const user = await User.findOne({ email });
     if (user) {
       const match = await bcrypt.compare(password, user.password);
       if (match) {
